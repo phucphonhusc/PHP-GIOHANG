@@ -407,6 +407,18 @@ html{
     transform: scale(0);
     transition: .5s;
 }
+.wrap .box{
+    position: relative;
+    overflow: hidden;
+}
+.wrap .box img{
+    max-width: 100%;
+    transition: .7s;
+}
+.wrap .box:hover img{
+    transform: scale(1.7);
+    
+}
 .wrap:hover .content{
     transform: scale(1);
 }

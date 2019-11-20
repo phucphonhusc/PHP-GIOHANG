@@ -20,7 +20,10 @@
                             <div class="thumbnails chuyendongmissiontrai" style="cursor: pointer; padding:0">
                                 <a >
                                     <div class="wrap">
-                                    <img  title="Chi tiết <?php echo $value->tengiay?>" src="<?php echo $value->anh?>" width="250" />
+                                        <div class="box">
+                                        <img  title="Chi tiết <?php echo $value->tengiay?>" src="<?php echo $value->anh?>" width="250" />
+                                        </div>
+                                    
                                     <div class="content text-center">
                                         <button data-toggle="modal" data-target="<?php echo "#chitietSP".$value->magiay; ?>" class="btn btn-primary btnchitiet" style="align:center" title="Chi tiết <?php echo $value->tengiay?>">Chi tiết</button>
                                     </div>
