@@ -391,3 +391,26 @@ html{
     color: #16da16;
     font-style: italic;
 }
+.wrap{
+    position: relative;
+    padding: 0;
+
+}
+.content{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(0, 0,0, 0.1);
+    height: 100%;
+    width: 100%;
+    padding-top: 45%;
+    transform: scale(0);
+    transition: .5s;
+}
+.wrap:hover .content{
+    transform: scale(1);
+}
+.btnchitiet:hover{
+    background: transparent ;
+    color: #007bff;
+}
