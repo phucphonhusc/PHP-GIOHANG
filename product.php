@@ -34,7 +34,7 @@
                                         </h4>
                                         <h5><?php echo number_format($value->gia, 0,'.','.').' đ';?> </h5>
                                         <form action="cart.php?action=datmua&id=<?php echo $value->magiay; ?>" method="post">
-                                            <button type="submit" class="btn btn-warning" name="datmua" title="Click vào để mua" class="fas fa-cart-plus"></i> Mua ngay</button>
+                                            <button type="submit" class="btn btn-warning" name="datmua" title="Click vào để mua"><i class="fas fa-cart-plus"></i> Mua ngay</button>
                                         <div class="modal fade" id="<?php echo "chitietSP".$value->magiay; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                            

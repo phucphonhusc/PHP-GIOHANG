@@ -25,6 +25,18 @@
                   
                 }
                 $ls = Giay::getListGiayFromDB();
+                $countCart =0;
+                if(isset($_SESSION["cart"])){
+                    foreach($_SESSION["cart"] as $key => $value){
+                        $countCart ++;
+                    }
+                }
+                // $countCart = 0;
+                // if(isset($_SESSION["cart"])){
+                //     foreach($_SESSION["cart"] as $key => $value){
+                //         $countCart ++;
+                //     }
+                // }
             ?>   
             <form class="form-inline md-form form-sm active-purple active-purple-2 mt-2" action="" method="GET">
                 <div class="searchbar">
@@ -43,7 +55,7 @@
                         <a href="#" class="nav-link m-2 menu-item">Customer <i class="far fa-user-circle"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.php" class="nav-link m-2 menu-item">Cart <i class="fas fa-cart-plus"></i></a>
+                        <a href="cart.php" class="nav-link m-2 menu-item">Cart(<?php echo $countCart;?>)<i class="fas fa-cart-plus"></i></a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link m-2 menu-item">Contact <i class="fas fa-phone-volume"></i></a>

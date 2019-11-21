@@ -15,7 +15,11 @@
 
                 );
                 $_SESSION["cart"][$count] = $item_array;
-                echo '<script>window.location="cart.php"</script>';
+                
+                echo '<div class="alert alert-info" role="alert">
+                        <p>Sản phẩm đã được thêm vào giỏ!</p> 
+                    </div>';
+                    echo '<script>window.location="cart.php"</script>';
             }
             else{
                 foreach($_SESSION["cart"] as $keys => $value){
@@ -47,15 +51,11 @@
             foreach ($_SESSION["cart"] as $keys => $value){
                 if ($value["item_id"] == $_GET["id"]){
                     unset($_SESSION["cart"][$keys]);
-                    // echo '<script>alert("Sản phẩm  đã được xóa khỏi giỏ hàng!")</script>';
-                    echo '<script>window.location="cart.php"</script>';
                 }
             }
         }
         if ($_GET["action"] == "deleteall"){
                     unset($_SESSION["cart"]);
-                    echo '<script>alert("Giỏ hàng đã bị xóa hết!")</script>';
-                    echo '<script>window.location="index.php"</script>';
         }
         if ($_GET["action"] == "change"){
             foreach($_SESSION["cart"] as $keys => $value){
@@ -64,8 +64,6 @@
                     $_SESSION["cart"][$keys]["item_size"] = $_POST["size"];
                 }
             }
-                    // echo '<script>alert("Sản phẩm  đã được xóa khỏi giỏ hàng!")</script>';
-            //  echo '<script>window.location="cart.php"</script>';
         }
 
     }
@@ -83,8 +81,13 @@
     <section class="p-5 ">
         <div class="container">
             <br><br><br>
+            <?php
+            if(!empty($_SESSION["cart"])){
+            ?> 
             <h2 style="text-align: center; color: blue;">THÔNG TIN GIỎ HÀNG</h2>
+            
             <div class="table-responsive">
+                       
             <table class="table" >
                 <thead class="thead-dark">
                     <tr align="center">
@@ -100,8 +103,9 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(!empty($_SESSION["cart"])){
                             $tong =0;
+                            // echo '<pre>'; 
+                            // print_r($_SESSION["cart"]);
                             foreach($_SESSION["cart"] as $key =>$value){
                             ?>
                                 <tr align="center" >
@@ -110,7 +114,7 @@
                                     <td ><a href="index.php?timkiem=<?php echo $value["item_ten"];?>"><img src="<?php echo $value["item_anh"];?>" alt="" width="75px"></a></td>
                                     <form action="cart.php?action=change&id=<?php echo $value["item_id"];?>" method="post" class="form-inline">
                                     <td>
-                                        <input style="width: 60px;" id="Author" name="soluong" type="number" min="1" max="50" value="<?php echo $value["item_soluong"];?>" class="form-control input-md">
+                                        <input style="width: 60px;" id="Author" name="soluong" type="number" min="1" max="50" value="<?php echo $value["item_soluong"];?>" class="form-control input-md" >
                                     </td>
                                     <td>
                                         <input style="width: 60px;" id="Author" name="size" type="number" min="39" max="44" value="<?php echo $value["item_size"];?>" class="form-control input-md">
@@ -118,7 +122,7 @@
                                     <td><?php echo number_format($value["item_gia"],0,'.','.').' đ';?></td>
                                     <td style="color:red"><?php echo number_format($value["item_soluong"] * $value["item_gia"],0,'.','.').' đ'; ?></td>
                                     <td>
-                                    <button style="margin-left: 5px;" type="submit" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></button></form>
+                                        <button style="margin-left: 5px;" type="submit" class="btn btn-outline-success"><i class="fas fa-check-circle"></i></button></form>
                                         <a href="cart.php?action=delete&id=<?php echo $value["item_id"];?>">
                                             <button type="submit" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>
                                         </a>
@@ -128,10 +132,10 @@
                                         
                                     </td>
                                 </tr>
-                            
+                                <?php } ?>
                                 <?php 
                                     $tong =$tong + ($value["item_soluong"] * $value["item_gia"]);
-                            }       
+                                  
                                 ?> 
                                 <tr>
                                     <td colspan="6" align="right" style="font-weight: bold;">Tạm tính: </td>
@@ -146,12 +150,25 @@
                                     <td colspan="7" align="right"><button type="button" class="btn btn-success"><i class="far fa-money-bill-alt"></i> Thanh toán ngay</button></td>
                                     <td><a href="index.php"><button type="button" class="btn btn-warning"><i class="fas fa-cart-plus"></i> Tiếp tục mua hàng</button></a></td>
                                 </tr>
-                                <?php                          
-                        }
+                                <?php
                     ?>
                 </tbody>
             </table>
             </div>
+            <?php
+            }
+            else{
+                echo '
+                <div class="alert alert-success text-center" role="alert">
+                    Giỏ hàng đang trống!
+                    
+                </div>
+                <div style="text-align:center">
+                    <a href="index.php"><button type="button" class="btn btn-warning"><i class="fas fa-cart-plus"></i> Tiếp tục mua hàng</button></a>
+                </div>';
+            }
+
+            ?>
             
         </div>
     </section>

@@ -24,6 +24,12 @@
                   
                 }
                 $ls = Giay::getListGiayFromDB();
+                $countCart =0;
+                if(isset($_SESSION["cart"])){
+                    foreach($_SESSION["cart"] as $key => $value){
+                        $countCart ++;
+                    }
+                }
                  //PHAN TRANG
                 // if(isset($result)){
                 //     $length = count($result);
@@ -74,7 +80,7 @@
                         <a href="#" class="nav-link m-2 menu-item">Customer <i class="far fa-user-circle"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.php" class="nav-link m-2 menu-item item-cart">Cart <i class="fas fa-cart-plus"></i></a>
+                        <a href="cart.php" class="nav-link m-2 menu-item item-cart">Cart(<?php echo $countCart;?>) <i class="fas fa-cart-plus"></i></a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link m-2 menu-item">Contact <i class="fas fa-phone-volume"></i></a>
