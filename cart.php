@@ -77,7 +77,11 @@
     }
 </style>
 <?php include_once("navbar.php");?>
-
+    <style>
+        .navbar{
+            background: #151f20;
+        }
+    </style>
     <section class="p-5 ">
         <div class="container">
             <br><br><br>
@@ -159,7 +163,7 @@
             }
             else{
                 echo '
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-danger text-center" role="alert">
                     Giỏ hàng đang trống!
                     
                 </div>

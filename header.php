@@ -12,14 +12,7 @@
         @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap&subset=vietnamese');
     </style>
 
-    <link rel="stylesheet" href="style.css">
-    <!-- <script src="script.js"></script> -->
-    <!-- <style>
-        .thumbnails:hover{
-            margin-bottom: 30px !important;
-            transition-duration: .3s;
-        }
-    </style> -->
+    <link rel="stylesheet" href="custom.css">
     <title>FoneeShoe</title>
 </head>
 
