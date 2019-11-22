@@ -108,8 +108,6 @@
                 <tbody>
                     <?php 
                             $tong =0;
-                            // echo '<pre>'; 
-                            // print_r($_SESSION["cart"]);
                             foreach($_SESSION["cart"] as $key =>$value){
                             ?>
                                 <tr align="center" >
@@ -136,11 +134,10 @@
                                         
                                     </td>
                                 </tr>
-                                <?php } ?>
-                                <?php 
+                                <?php  
                                     $tong =$tong + ($value["item_soluong"] * $value["item_gia"]);
                                   
-                                ?> 
+                            }?> 
                                 <tr>
                                     <td colspan="6" align="right" style="font-weight: bold;">Tạm tính: </td>
                                     <th align="right" style="color:red"><?php echo number_format($tong, 0, '.','.') .' đ'?></th>
