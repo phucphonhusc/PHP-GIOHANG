@@ -52,13 +52,13 @@
                         <a href="#" class="nav-link m-2 menu-item">Product <i class="fab fa-angellist"></i></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">Customer <i class="far fa-user-circle"></i></a>
-                    </li>
-                    <li class="nav-item">
                         <a href="cart.php" class="nav-link m-2 menu-item">Cart<i class="fas fa-cart-plus"></i><span class="fixcart"><?php echo $countCart;?></span></a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link m-2 menu-item">Contact <i class="fas fa-phone-volume"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="logout.php" class="nav-link m-2 menu-item"><?php echo $user->fullname;?> <i class="fas fa-sign-out-alt"></i></a>
                     </li>
                 </ul>
             </div>

@@ -1,5 +1,9 @@
+
+<?php 
+    include_once("header.php");
+?>
 <?php
-    session_start();
+    
     if(isset($_POST["datmua"])){
         if(isset($_SESSION["cart"])){
             $item_array_id = array_column($_SESSION["cart"], "item_id");
@@ -68,9 +72,7 @@
 
     }
 ?>
-<?php 
-    include_once("header.php");
-?>
+
 <style>
     .nav-item .nav-active{
     color: white !important;
@@ -82,7 +84,7 @@
             background: #151f20;
         }
     </style>
-    <section class="p-5 ">
+    <section class="p-5">
         <div class="container">
             <br><br><br>
             <?php
@@ -160,8 +162,8 @@
             }
             else{
                 echo '
-                <div class="alert alert-danger text-center" role="alert">
-                    Giỏ hàng đang trống!
+                <div class="text-center">
+                    <img src="images/cart_is_empty.png" alt="">
                     
                 </div>
                 <div style="text-align:center">
@@ -173,6 +175,4 @@
             
         </div>
     </section>
-<?php 
-    include_once("footer.php");
-?>
+    
