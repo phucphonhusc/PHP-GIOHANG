@@ -10,7 +10,7 @@ if (isset($_POST['do-register']))
     // Lấy thông tin
     // Để an toàn thì ta dùng hàm mssql_escape_string để
     // chống hack sql injection
-    $username   = isset($_POST['username']) ? mysql_escape_string($_POST['username']) : '';
+    $username   = isset($_POST['username']) ? mys($_POST['username']) : '';
     $password   = isset($_POST['password']) ? md5($_POST['password']) : '';
     $username   = isset($_POST['fullname']) ? mysql_escape_string($_POST['fullname']) : '';
     

@@ -1,4 +1,4 @@
-
+<?php include_once("model/user.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,24 +79,49 @@
 <body>
 
     <div class="login-box">
-    
-  <h1>Register <img src="images/foneeshoe.png" alt="" width="100"></h1>
-  <form id="login-form" class="form" action="xulyregister.php" method="post">
+    <?php 
+        if(isset($_POST['do-register'])){
+            if(empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["password2"]) || empty($_POST["fullname"])){
+                echo '<div class="alert alert-danger" role="alert">
+                    Vui lòng không để trống !
+              </div>';
+            }else{
+                $username= $_POST["username"];
+                $password= $_POST["password"];
+                $password2= $_POST["password2"];
+                $fullname= $_POST["fullname"];
+                if($password != $password2){
+                    echo '<div class="alert alert-danger" role="alert">
+                            Mật khẩu không trùng nhau         
+                        </div>';
+                }else{
+                    User::register($username, $password, $fullname);
+                }
+            }
+        
+        }
+    ?>
+    <h1>Register <img src="images/foneeshoe.png" alt="" width="100"></h1>
+  <form id="login-form" class="form" action="" method="post" role="form">
     <div class="textbox">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Username" name="username">
+        <input type="text" placeholder="Nhập tên đăng nhập" name="username">
     </div>
 
     <div class="textbox">
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" name="password">
+        <input type="password" placeholder="Nhập mật khẩu" name="password">
+    </div>
+    <div class="textbox">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Nhập lại mật khẩu" name="password2">
     </div>
     <div class="textbox">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Fullname" name="fullname">
+        <input type="text" placeholder="Nhập họ tên" name="fullname">
     </div>
 
-    <input type="submit" name="do-register" class="btn" value="Register Now">
+    <input type="submit" name="do-register" class="btn" value="Đăng ký ngay">
   </form>
   
 </div>

@@ -40,6 +40,36 @@
             //B3: Giải phóng kết nối
             $con->close();  
         }
+        static function register($username, $password, $fullname){
+            $conn = User::connect();
+              // Kiểm tra username hoặc email có bị trùng hay không
+            $sql = "SELECT * FROM user WHERE username = '$username' ";
+            
+            // Thực thi câu truy vấn
+            $result = mysqli_query($conn, $sql);
+            
+            // Nếu kết quả trả về lớn hơn 1 thì nghĩa là username hoặc email đã tồn tại trong CSDL
+            if (mysqli_num_rows($result) > 0)
+            {
+                // Sử dụng javascript để thông báo
+                echo '<script language="javascript">alert("Tên đăng nhập đã tồn tại"); window.location="register.php";</script>';
+                
+                // Dừng chương trình
+                die ();
+            }
+            else {
+                // Ngược lại thì thêm bình thường
+                $sql = "INSERT INTO user (username, password, fullname) VALUES ('$username','$password','$fullname')";
+                
+                if (mysqli_query($conn, $sql)){
+                    echo '<script language="javascript">alert("Đăng ký thành công"); window.location="login.php";</script>';
+                }
+                else {
+                    echo '<script language="javascript">alert("Có lỗi trong quá trình xử lý"); window.location="register.php";</script>';
+                }
+            }
+            $conn->close();
+        }
         
     }
 ?>

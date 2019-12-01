@@ -1,5 +1,6 @@
 
 <nav class="navbar navbar-expand-lg fixed-top nav-menu">
+    <div class="container">
             <a href="index.php" class="navbar-brand text-light fix-logo"><img src="images/foneeshoe.png" alt=""
                     width="55">FoneeShoe</span></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -87,5 +88,6 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+         </div>   
+     </nav>
        

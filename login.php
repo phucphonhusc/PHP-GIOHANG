@@ -92,6 +92,10 @@
         cursor: pointer;
         margin: 12px 0;
         }
+        .btn:hover{
+            background: #03c2fc;
+            color: white;
+        }
 
     </style>
     <title>Login</title>
@@ -108,17 +112,18 @@
   <form id="login-form" class="form" action="" method="post">
     <div class="textbox">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Username" name="username">
+        <input type="text" placeholder="Tên đăng nhập" name="username">
     </div>
 
     <div class="textbox">
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" name="password">
+        <input type="password" placeholder="Mật khẩu" name="password">
     </div>
 
-    <input type="submit" class="btn" value="Sign in">
+    <input type="submit" class="btn" value="Đăng nhập">
+    Bạn chưa có tài khoản ? <a href="register.php" >Register now</a> 
   </form>
-  Bạn chưa có tài khoản ? <a href="register.php" >Register now</a> 
+ 
 </div>
 </body>
 </html>

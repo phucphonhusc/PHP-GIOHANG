@@ -1,6 +1,7 @@
 <section class="header container-fluid">
         <!-- navbar -->
-        <nav class="navbar navbar-expand-lg fixed-top nav-menu">
+    <nav class="navbar navbar-expand-lg fixed-top nav-menu ">
+        <div class="container">
             <a href="index.php" class="navbar-brand text-light fix-logo"><img src="images/foneeshoe.png" alt=""
                     width="55">FoneeShoe</span></a>
             <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -62,7 +63,8 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
         <!-- banner -->
         <div class="text-light text-md-right text-center banner" style="font-family: 'Dancing Script', cursive;">
             <h2 class="display-5 banner-heading" style="font-size: 53px;">Wellcome to FoneeShoe</h2>
