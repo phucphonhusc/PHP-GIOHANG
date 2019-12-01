@@ -27,6 +27,7 @@
         color: white;
         }
         .login-box h1{
+            margin-left: 10px;
         float: left;
         font-size: 40px;
         border-bottom: 6px solid #03c2fc;
@@ -71,6 +72,10 @@
         font-size: 18px;
         cursor: pointer;
         margin: 12px 0;
+        }
+        .btn:hover{
+            background: #03c2fc;
+            color: white;
         }
 
     </style>

@@ -28,6 +28,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/foneeshoe.png">
     <link rel="stylesheet" href="css/bootstrap1.min.css">
+    <script src="js/all.js"></script>
     <style>
         body {
         margin: 0;
@@ -40,11 +41,12 @@
         }
         .login-box{
         width: 280px;
-        position: absolute;
+        position: relative;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
         color: white;
+        
         }
         .login-box h1{
         float: left;
@@ -53,6 +55,7 @@
         color: #03c2fc;
         margin-bottom: 50px;
         padding: 13px 0;
+        margin-left: 34px;
         }
         .textbox{
         width: 100%;
@@ -63,9 +66,10 @@
         border-bottom: 1px solid #03c2fc;
         }
         .textbox i{
-        width: 26px;
-        float: left;
-        text-align: center;
+            width: 26px;
+            float: left;
+            text-align: center;
+        
         }
         .textbox input{
         border: none;
@@ -111,12 +115,12 @@
   <h1>Login <img src="images/foneeshoe.png" alt="" width="100"></h1>
   <form id="login-form" class="form" action="" method="post">
     <div class="textbox">
-        <i class="fas fa-user"></i>
+        <i class="far fa-user" style="float: left; color:#03c2fc; margin-top:5px;"></i>
         <input type="text" placeholder="Tên đăng nhập" name="username">
     </div>
 
     <div class="textbox">
-        <i class="fas fa-lock"></i>
+        <i class="fas fa-lock" style="float: left; color:#03c2fc; margin-top:5px;"></i>
         <input type="password" placeholder="Mật khẩu" name="password">
     </div>
 
