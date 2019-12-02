@@ -90,7 +90,7 @@
             <?php
             if(!empty($_SESSION["cart"])){
             ?> 
-            <h2 style="text-align: center; color: blue;">THÔNG TIN GIỎ HÀNG</h2>
+            <h2 style="text-align: center; color: #03c2fc;">THÔNG TIN GIỎ HÀNG <i class="fas fa-cart-plus"></i></h2>
             
             <div class="table-responsive">
                        

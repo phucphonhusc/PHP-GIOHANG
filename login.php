@@ -61,7 +61,7 @@
         width: 100%;
         overflow: hidden;
         font-size: 20px;
-        padding: 8px 0;
+        padding: 8px 10px;
         margin: 8px 0;
         border-bottom: 1px solid #03c2fc;
         }
@@ -95,6 +95,7 @@
         font-size: 18px;
         cursor: pointer;
         margin: 12px 0;
+        
         }
         .btn:hover{
             background: #03c2fc;
@@ -125,7 +126,7 @@
     </div>
 
     <input type="submit" class="btn" value="Đăng nhập">
-    Bạn chưa có tài khoản ? <a href="register.php" >Register now</a> 
+    Bạn chưa có tài khoản ? <a href="register.php" style="color:orange;">Đăng ký ngay!</a> 
   </form>
  
 </div>
