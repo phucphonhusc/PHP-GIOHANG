@@ -38,6 +38,37 @@ class Giay{
         $con->close();
         return $lsGiay;
     }
+    static function addGiayDB($magiay,$tengiay, $anh, $gia, $nam){
+        $con = Giay::connect();
+        $sql = "INSERT INTO giay (Magiay, TenGiay, Anh, Gia, Nam) VALUES ('$magiay','$tengiay','$anh','$gia','$nam')";
+        // $result = $con->query($sql);
+        if($con->query($sql)===TRUE){
+            echo "Thêm thành công";
+        }else{
+            echo "Thêm thất bại". $con->connect_error;
+        }
+        $con->close();
+    }
+    static function delGiayDB($magiay){
+        $con = Giay::connect();
+        $sql = "DELETE FROM giay  WHERE Magiay = $magiay " ;
+        if($con->query($sql) === TRUE){
+            echo "Xóa thành công";
+        }else{
+            echo "Xóa thất bại". $con->connect_error;
+        }         
+        $con->close();
+    }
+    static function editGiayDB($magiay, $tengiay, $anh, $gia , $nam){
+        $con = Contact::connect();
+        $sql = "UPDATE giay SET TenGiay='$tengiay', Anh='$anh', Gia='$gia' WHERE Magiay= $magiay";
+        if($con->query($sql) === TRUE){
+            echo "Chỉnh sửa thành công";
+        }else{
+            echo "Chỉnh sửa thất bại". $con->connect_error;
+        }
+         $con->close();
+    }
     // static function getListSearchGiay($search = null)
     // {
     //         $con = Giay::connect();

@@ -1,4 +1,4 @@
-<section class="p-5 text-center bg-light">
+<section class="p-5 text-center bg-light product">
         <div class="container">
             <div class="row text-center text-muted">
                 <div class="col m-4">
@@ -29,7 +29,7 @@
                                     </div>
                                     </div>
                                     <div>
-                                        <h4 style="text-align:center; color:blue">
+                                        <h4 style="text-align:center; color:#03c2fc">
                                             <?php echo $value->tengiay?>
                                         </h4>
                                         <h5><?php echo number_format($value->gia, 0,'.','.').' đ';?> </h5>

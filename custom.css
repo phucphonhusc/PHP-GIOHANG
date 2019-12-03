@@ -29,7 +29,6 @@ body{
     transition: width 0.4s linear;
     }
 
-
     .search_icon{
     height: 40px;
     width: 40px;
@@ -434,3 +433,6 @@ html{
 .cart-active{
     color: #03c2fc;
 }
+/* .product{
+    background: #151f20 !important;
+} */
