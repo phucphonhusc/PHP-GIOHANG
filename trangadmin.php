@@ -1,3 +1,53 @@
+<?php session_start();
+    include_once("model/user.php");
+    include_once("model/giay.php");
+   if (!isset($_SESSION["user"])) {
+    header("location: login.php");
+    }
+    $user = unserialize($_SESSION["user"]) ; 
+    if (isset($_REQUEST["editGiay"])) {
+      $magiay=  $_REQUEST["magiay"];
+      $tengiay = $_REQUEST["tengiay"];
+      $path= "images/";
+      $fileName= "";
+      if(isset($_FILES["anh"])){
+        if($_FILES["anh"]["type"] == "image/jpg"||$_FILES["anh"]["type"]== "image/png" ||$_FILES["anh"]["type"]== "image/jpeg"){
+          
+            if($_FILES["anh"]["error"]==0){
+              //TIẾN HÀNH ĐƯA FILE VÀO SERVER
+              $filename = $_FILES["anh"]["tmp_name"];
+              move_uploaded_file($filename, $path.$_FILES["anh"]["name"]);
+              $fileName .= "images/".$_FILES["anh"]["name"];
+            }else{
+              echo "LỖI FILE!";
+            }
+          
+          
+        }
+        else{
+          echo "file không đúng định dạng";
+        }
+      }
+      
+    //   if (isset($_FILES['image']) && !empty($_FILES['image']['name'][0])) {
+    //     $uploadedFiles = $_FILES['image'];
+    //     $result = uploadFiles($uploadedFiles);
+    //     if (!empty($result['errors'])) {
+    //         $error = $result['errors'];
+    //     } else {
+    //         $image = $result['path'];
+    //     }
+    // }
+      $anh = $fileName;
+      $gia = $_REQUEST["gia"];
+      $nam = $_REQUEST["nam"];
+      $mota = $_REQUEST["mota"];
+      Giay::editGiayDB($magiay,$tengiay,$anh,$gia,$nam,$mota);
+      
+    }
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +65,12 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <script text="text/javascript" src="ckeditor/ckeditor.js"></script>
+    <script text="text/javascript" src="ckfinder/ckfinder.js"></script>
+    <link rel="icon" href="images/foneeshoe.png">
+    <link rel="stylesheet" href="css/bootstrap1.min.css">
+    <script defer src="js/all.js"></script>
+    
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -143,8 +199,8 @@ to get the desired effect
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
+        <a href="logout.php" class="nav-link">
+             <i class="fas fa-sign-out-alt"></i></a>
       </li>
     </ul>
   </nav>
@@ -264,7 +320,73 @@ to get the desired effect
                                     <td><?php echo $value->nam;?></td>
                                     
                                     <td>
-                                        <button style="margin-left: 5px;" type="submit" class="btn btn-outline-success"><i class="far fa-edit"></i></button>
+                                        <button style="margin-left: 5px;" type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="<?php echo "#editGiay".$value->magiay; ?>"><i class="far fa-edit"></i></button>
+                                        <div class="modal fade" id="<?php echo "editGiay".$value->magiay; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog" role="document">
+                                            <form action="" method="post" enctype="multipart/form-data">
+                                              <div class="modal-content" style="width: 1000px; margin-left: -146px;">
+                                                <div class="modal-header" style="    background: #151f20; color: green;">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin sản phẩm : <?php echo "$value->tengiay";?></h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  
+                                                  <fieldset>
+                                                      <div class="form-group d-flex">
+                                                        <label class=" col-md-3 control-label" for="Title">Mã SP</label>
+                                                        <div class="col-md-9">
+                                                          <input id="i" name="magiay" type="text" disabled value="<?php echo "$value->magiay";?>" class="form-control input-md">
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group d-flex">
+                                                        <label class=" col-md-3 control-label" for="Title">Tên SP</label>
+                                                        <div class="col-md-9">
+                                                          <input id="Title" name="tengiay" type="text" value="<?php echo "$value->tengiay";?>" class="form-control input-md">
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group d-flex">
+                                                        <label class=" col-md-3 control-label" for="Title">Ảnh SP</label>
+                                                        <div class="col-md-9" style="margin-left: -221px;">
+                                                          <img src="<?php echo "$value->anh";?>" class="form-control input-md" style="width:250px ; height: 250px;"/ >
+                                                          <input id="editor2" name="anh" type="file"  style="margin-left: 42px;">
+                                                        </div>
+                                                      </div> 
+                                                      <div class="form-group d-flex">
+                                                        <label class="col-md-3 control-label" for="Author">Giá SP</label>
+                                                        <div class="col-md-9">
+                                                          <input id="Author" name="gia" type="text" value="<?php echo "$value->gia";?>" class="form-control input-md">
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group d-flex">
+                                                        <label class="col-md-3 control-label" for="Author">Năm SX</label>
+                                                        <div class="col-md-9">
+                                                          <input id="Author" name="nam" type="text" value="<?php echo "$value->nam";?>" class="form-control input-md">
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group d-flex">
+                                                        <label class=" col-md-3 control-label" for="Author">Mô tả</label>
+                                                        <div class="col-md-9">
+                                                          <textarea id="editor1" name="mota" type="text" value="<?php echo "$value->mota";?>" class="form-control input-md">
+                                                        
+                                                        </textarea>
+                                                        <script>
+                                                            CKEDITOR.replace( 'editor1' );
+                                                        </script>
+                                                        </div>
+                                                      </div>
+                                                  </fieldset>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <input type="hidden" name="magiay" value="<?php echo "$value->magiay"; ?>" />
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                  <button type="submit" class="btn btn-primary" name="editGiay">Lưu</button>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
                                         <button style="margin-left: 5px;" type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="<?php echo "#delGiay".$value->magiay; ?>"><i class="far fa-trash-alt"></i></button>
                                         <div class="modal fade" id="<?php echo "delGiay".$value->magiay; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -316,5 +438,6 @@ to get the desired effect
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+
 </body>
 </html>

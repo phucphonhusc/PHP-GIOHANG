@@ -5,13 +5,15 @@ class Giay{
     var $anh;
     var $gia;
     var $nam;
-    function __construct($magiay,$tengiay,$anh,$gia,$nam )
+    var $mota;
+    function __construct($magiay,$tengiay,$anh,$gia,$nam,$mota )
     {
         $this->magiay = $magiay;
         $this->tengiay=$tengiay;
         $this->anh = $anh;
         $this->gia = $gia;
         $this->nam = $nam;
+        $this->mota = $mota;
     }
     static function connect(){
         //b1: tạo kết nối
@@ -30,7 +32,7 @@ class Giay{
         $lsGiay = array();
         if($result->num_rows >0){
             while($row = $result->fetch_assoc()){
-                $giay= new Giay($row["Magiay"],$row["TenGiay"],$row["Anh"],$row["Gia"], $row["Nam"]);
+                $giay= new Giay($row["Magiay"],$row["TenGiay"],$row["Anh"],$row["Gia"], $row["Nam"], $row["MoTa"]);
                 array_push($lsGiay, $giay);
             }
         }
@@ -38,9 +40,9 @@ class Giay{
         $con->close();
         return $lsGiay;
     }
-    static function addGiayDB($magiay,$tengiay, $anh, $gia, $nam){
+    static function addGiayDB($tengiay, $anh, $gia, $nam, $mota){
         $con = Giay::connect();
-        $sql = "INSERT INTO giay (Magiay, TenGiay, Anh, Gia, Nam) VALUES ('$magiay','$tengiay','$anh','$gia','$nam')";
+        $sql = "INSERT INTO giay (TenGiay, Anh, Gia, Nam, MoTa) VALUES ('$tengiay','$anh','$gia','$nam','$mota')";
         // $result = $con->query($sql);
         if($con->query($sql)===TRUE){
             echo "Thêm thành công";
@@ -59,9 +61,9 @@ class Giay{
         }         
         $con->close();
     }
-    static function editGiayDB($magiay, $tengiay, $anh, $gia , $nam){
-        $con = Contact::connect();
-        $sql = "UPDATE giay SET TenGiay='$tengiay', Anh='$anh', Gia='$gia' WHERE Magiay= $magiay";
+    static function editGiayDB($magiay, $tengiay, $anh, $gia , $nam, $mota){
+        $con = Giay::connect();
+        $sql = "UPDATE giay SET TenGiay='$tengiay', Anh='$anh', Gia='$gia', Nam ='$nam', MoTa='$mota' WHERE Magiay= $magiay";
         if($con->query($sql) === TRUE){
             echo "Chỉnh sửa thành công";
         }else{
@@ -101,7 +103,7 @@ class Giay{
             $lsGiay = array();
             if($result->num_rows >0){
                 while($row = $result->fetch_assoc()){
-                    $giay= new Giay($row["Magiay"],$row["TenGiay"],$row["Anh"],$row["Gia"], $row["Nam"]);
+                    $giay= new Giay($row["Magiay"],$row["TenGiay"],$row["Anh"],$row["Gia"], $row["Nam"], $row["MoTa"]);
                     array_push($lsGiay, $giay);
                 }
             }

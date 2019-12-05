@@ -13,7 +13,7 @@
     
             $_SESSION["user"] = serialize($user); 
             
-            header("location:index.php");
+            header("location:trangadmin.php");
         }
         else{
             $information = "Đăng nhập thất bại.";

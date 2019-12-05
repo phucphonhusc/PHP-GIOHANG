@@ -84,7 +84,7 @@
                         <a href="#" class="nav-link m-2 menu-item">Contact <i class="fas fa-phone-volume"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a href="logout.php" class="nav-link m-2 menu-item"><?php echo $user->fullname;?> <i class="fas fa-sign-out-alt"></i></a>
+                        <!-- <a href="logout.php" class="nav-link m-2 menu-item"><?php echo $user->fullname;?> <i class="fas fa-sign-out-alt"></i></a> -->
                     </li>
                 </ul>
             </div>

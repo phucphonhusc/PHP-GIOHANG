@@ -1,12 +1,4 @@
-<?php session_start();
-    include_once("model/user.php");
-   if (!isset($_SESSION["user"])) {
-    header("location: login.php");
-    }
-    $user = unserialize($_SESSION["user"]) ; 
-    
-
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>

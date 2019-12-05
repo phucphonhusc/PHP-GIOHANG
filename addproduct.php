@@ -1,3 +1,52 @@
+<?php session_start();
+    include_once("model/user.php");
+    include_once("model/giay.php");
+    include_once("model/function.php");
+   if (!isset($_SESSION["user"])) {
+    header("location: login.php");
+    }
+    $user = unserialize($_SESSION["user"]) ; 
+    if (isset($_REQUEST["addGiay"])) {
+      $tengiay = $_REQUEST["tengiay"];
+      $path= "images/";
+      $fileName= "";
+      if(isset($_FILES["anh"])){
+        if($_FILES["anh"]["type"] == "image/jpg"||$_FILES["anh"]["type"]== "image/png" ||$_FILES["anh"]["type"]== "image/jpeg"){
+          
+            if($_FILES["anh"]["error"]==0){
+              //TIẾN HÀNH ĐƯA FILE VÀO SERVER
+              $filename = $_FILES["anh"]["tmp_name"];
+              move_uploaded_file($filename, $path.$_FILES["anh"]["name"]);
+              $fileName .= "images/".$_FILES["anh"]["name"];
+            }else{
+              echo "LỖI FILE!";
+            }
+          
+          
+        }
+        else{
+          echo "file không đúng định dạng";
+        }
+      }
+      
+    //   if (isset($_FILES['image']) && !empty($_FILES['image']['name'][0])) {
+    //     $uploadedFiles = $_FILES['image'];
+    //     $result = uploadFiles($uploadedFiles);
+    //     if (!empty($result['errors'])) {
+    //         $error = $result['errors'];
+    //     } else {
+    //         $image = $result['path'];
+    //     }
+    // }
+      $anh = $fileName;
+      $gia = $_REQUEST["gia"];
+      $nam = $_REQUEST["nam"];
+      $mota = $_REQUEST["mota"];
+      Giay::addGiayDB($tengiay,$anh,$gia,$nam,$mota);
+      
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +64,11 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script> -->
+
+    <script  src="ckfinder/ckfinder.js"></script>
+    <script  src="ckeditor/ckeditor.js"></script>
+  
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -143,8 +197,7 @@ to get the desired effect
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
+        <a href="logout.php" class="nav-link" ><i class="fas fa-sign-out-alt"></i></a>
       </li>
     </ul>
   </nav>
@@ -216,7 +269,7 @@ to get the desired effect
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                   
                       
                       <fieldset>
@@ -224,13 +277,13 @@ to get the desired effect
                         <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="Title">Tên sản phẩm</label>
                             <div class="col-md-10">
-                              <input id="id" name="tengiay" type="text" placeholder="Tên liên lạc" class="form-control input-md">
+                              <input id="id" name="tengiay" type="text" placeholder="Tên sản phẩm" class="form-control input-md">
                             </div>
                           </div>
                           <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="Title">Ảnh sản phẩm</label>
                             <div class="col-md-10">
-                              <input id="Title" name="anh" type="text" placeholder="Ảnh Sản phẩm" class="form-control input-md">
+                              <input id="Title" name="anh" type="file" placeholder="Ảnh Sản phẩm"  value="">
                             </div>
                           </div>
                           <div class="form-group d-flex">
@@ -241,8 +294,35 @@ to get the desired effect
                           </div>
                           <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="Title">Năm sản xuất</label>
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <select class="selectpicker form-control" name="nam">
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group d-flex">
+                            <label class="pt-1 col-md-2 control-label" for="Title">Mô tả</label>
                             <div class="col-md-10">
-                              <input id="Title" name="nam" type="text" placeholder="Năm sản xuất" class="form-control input-md">
+                              
+                            <textarea name="mota" id="editor1" rows="10" cols="80">
+                                  This is my textarea to be replaced with CKEditor.
+                              </textarea>
+                              <script>
+                                  // Replace the <textarea id="editor1"> with a CKEditor
+                                  // instance, using default configuration.
+                                  CKEDITOR.replace( 'editor1' );
+                              </script>
+                              <br>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                              <button type="submit" class="btn btn-primary" name="addGiay">Lưu</button>
                             </div>
                           </div>
                           
@@ -250,8 +330,7 @@ to get the desired effect
                       </fieldset>
                     
                     
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                      <button type="submit" class="btn btn-primary" name="addContact">Lưu</button>
+                      
                     
                   
                 </form>
@@ -280,5 +359,6 @@ to get the desired effect
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+
 </body>
 </html>
