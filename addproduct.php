@@ -311,15 +311,7 @@ to get the desired effect
                           <div class="form-group d-flex">
                             <label class="pt-1 col-md-2 control-label" for="Title">Mô tả</label>
                             <div class="col-md-10">
-                              
-                            <textarea name="mota" id="editor1" rows="10" cols="80">
-                                  This is my textarea to be replaced with CKEditor.
-                              </textarea>
-                              <script>
-                                  // Replace the <textarea id="editor1"> with a CKEditor
-                                  // instance, using default configuration.
-                                  CKEDITOR.replace( 'editor1' );
-                              </script>
+                              <textarea class="ckeditor" name="mota" id="" cols="30" rows="10"></textarea>
                               <br>
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                               <button type="submit" class="btn btn-primary" name="addGiay">Lưu</button>

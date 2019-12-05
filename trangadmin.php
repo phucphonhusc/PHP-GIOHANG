@@ -368,12 +368,10 @@ to get the desired effect
                                                       <div class="form-group d-flex">
                                                         <label class=" col-md-3 control-label" for="Author">Mô tả</label>
                                                         <div class="col-md-9">
-                                                          <textarea id="editor1" name="mota" type="text" value="<?php echo "$value->mota";?>" class="form-control input-md">
-                                                        
+                                                          <textarea  name="mota" type="text" class="form-control input-md ckeditor">
+                                                            <?php echo "$value->mota";?>
                                                         </textarea>
-                                                        <script>
-                                                            CKEDITOR.replace( 'editor1' );
-                                                        </script>
+                                                        
                                                         </div>
                                                       </div>
                                                   </fieldset>

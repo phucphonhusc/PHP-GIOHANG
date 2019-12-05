@@ -45,9 +45,9 @@ class Giay{
         $sql = "INSERT INTO giay (TenGiay, Anh, Gia, Nam, MoTa) VALUES ('$tengiay','$anh','$gia','$nam','$mota')";
         // $result = $con->query($sql);
         if($con->query($sql)===TRUE){
-            echo "Thêm thành công";
+            echo '<script>alert("Thêm thành công!");</script>';
         }else{
-            echo "Thêm thất bại". $con->connect_error;
+            echo '<script>alert("Thêm thất bại!");</script>'. $con->connect_error;
         }
         $con->close();
     }
@@ -55,9 +55,9 @@ class Giay{
         $con = Giay::connect();
         $sql = "DELETE FROM giay  WHERE Magiay = $magiay " ;
         if($con->query($sql) === TRUE){
-            echo "Xóa thành công";
+            echo '<script>alert("Xóa thành công!");</script>';
         }else{
-            echo "Xóa thất bại". $con->connect_error;
+            echo '<script>alert("Xóa thất bại!");</script>'. $con->connect_error;
         }         
         $con->close();
     }
@@ -65,9 +65,9 @@ class Giay{
         $con = Giay::connect();
         $sql = "UPDATE giay SET TenGiay='$tengiay', Anh='$anh', Gia='$gia', Nam ='$nam', MoTa='$mota' WHERE Magiay= $magiay";
         if($con->query($sql) === TRUE){
-            echo "Chỉnh sửa thành công";
+            echo '<script>alert("Chỉnh sửa thành công!");</script>';
         }else{
-            echo "Chỉnh sửa thất bại". $con->connect_error;
+            echo '<script>alert("Chỉnh sửa thành công!");</script>'. $con->connect_error;
         }
          $con->close();
     }
