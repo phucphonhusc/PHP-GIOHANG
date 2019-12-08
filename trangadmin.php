@@ -93,7 +93,7 @@ to get the desired effect
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -261,8 +261,8 @@ to get the desired effect
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Danh sách sản phẩm</h1>
+          <div class="col-sm-12">
+            <h1 class="m-0" style="color: #03c2fc; text-align:center">Danh sách sản phẩm <i class="fas fa-clipboard-list"></i></h1>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
