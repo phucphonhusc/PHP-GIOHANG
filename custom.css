@@ -4,6 +4,12 @@ body{
 /* font-family: 'Gamja Flower', sans-serif; */
 
 }
+.mota p img {      
+    max-width:400px;       
+    max-height:300px;       
+          
+    clear: both;       
+    }
 .thumbnails a {text-decoration: none;} 
 
 .thumbnails label {color: #03c2fc;}
@@ -78,6 +84,7 @@ html{
     letter-spacing: 1px;
     transition: color .5s;
 }
+
 .menu-item:hover{
     color:#03c2fc;
     /* display: block !important; */

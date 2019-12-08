@@ -38,58 +38,63 @@
                                         <div class="modal fade" id="<?php echo "chitietSP".$value->magiay; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                            
-                                                <div class="modal-content">
+                                                <div class="modal-content" style="width: 1000px; margin-left: -200px;">
                                                 <div class="modal-header" style="background: #151f20;">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết sản phẩm : <?php echo "$value->tengiay";?></h5>
+                                                    <h5 style="text-align: center" class="modal-title" id="exampleModalLabel">Chi tiết sản phẩm : <?php echo "$value->tengiay";?></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="font-weight: bolder;">
                                                     
                                                     <fieldset>
+                                                        <div class="form-group d-flex" >
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Mã SP</label>
+                                                        <div class="col-md-2">
+                                                            <p style="text-align:left"><?php echo "$value->magiay";?></p>
+                                                        </div>
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Tên SP</label>
+                                                        <div class="col-md-6">
+                                                            <p style="text-align:left"><?php echo "$value->tengiay";?></p>
+                                                            <input type="hidden" name="hidden_ten" value="<?php echo "$value->tengiay"; ?>" >
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group d-flex" >
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Giá</label>
+                                                        <div class="col-md-2">
+                                                            <p style="text-align:left"><?php echo "$value->gia";?> VND</p>
+                                                            <input type="hidden" name="hidden_gia" value="<?php echo "$value->gia"; ?>" >
+                                                        </div>
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Năm SX</label>
+                                                        <div class="col-md-2">
+                                                            <p style="text-align:left"><?php echo "$value->nam";?></p>
+                                                            <input type="hidden" name="hidden_nam" value="<?php echo "$value->nam"; ?>" >
+                                                        </div>
+                                                        </div>
+                                                        
                                                         <div class="form-group d-flex">
-                                                        <label class=" col-md-3 control-label" for="Title">Mã SP</label>
-                                                        <div class="col-md-9">
-                                                            <input id="i" name="idcontact" type="text" disabled value="<?php echo "$value->magiay";?>" class="form-control input-md">
-                                                        </div>
-                                                        </div>
-                                                        <div class="form-group d-flex">
-                                                        <label class=" col-md-3 control-label" for="Title">Tên SP</label>
-                                                        <div class="col-md-9">
-                                                            <input id="Title" name="ten" type="text" disabled value="<?php echo "$value->tengiay";?>" class="form-control input-md">
-                                                            <input type="hidden" name="hidden_ten" value="<?php echo "$value->tengiay"; ?>" class="form-control input-md">
-
-                                                        </div>
-                                                        </div>
-                                                        <div class="form-group d-flex">
-                                                        <label class=" col-md-3 control-label" for="Title">Ảnh</label>
-                                                        <div class="col-md-6" id="zoomimg">
-                                                            <img src="<?php echo "$value->anh";?>" disabled class="form-control input-md" width="250"/>
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Ảnh</label>
+                                                        <div class="col-md-2" >
+                                                            <img src="<?php echo "$value->anh";?>" disabled class="form-control input-md" style="height: 200px; width:200px;" />
                                                             <input type="hidden" name="hidden_anh" value="<?php echo "$value->anh"; ?>" class="form-control input-md">
                                                         </div>
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Title">Mô tả SP</label>
+                                                        <div class="col-md-6" style="text-align:left;">
+                                                            <div class="mota">
+                                                            <?php echo $value->mota?>
+                                                            </div>
+                                                            
                                                         </div>
+                                                        </div>
+                                                        
                                                         <div class="form-group d-flex">
-                                                        <label class="pt-1 col-md-3 control-label" for="Title">Giá</label>
-                                                        <div class="col-md-9">
-                                                            <input id="Title" name="email" type="text" disabled value="<?php echo number_format($value->gia, 0,'.','.').' đ';?>" class="form-control input-md">
-                                                            <input type="hidden" name="hidden_gia" value="<?php echo "$value->gia"; ?>" class="form-control input-md">
+                                                        <label style="text-align:right;" class="col-md-2 control-label" for="Author">Số lượng</label>
+                                                        <div class="col-md-2">
+                                                            <input style="text-align:left" id="Author" name="soluong" type="number" min="1" value="1" class="form-control input-md">
                                                         </div>
-                                                        </div> 
-                                                        <div class="form-group d-flex">
-                                                        <label class="pt-1 col-md-3 control-label" for="Author">Năm SX</label>
-                                                        <div class="col-md-9">
-                                                            <input id="Author" name="sodienthoai" type="text" disabled value="<?php echo "$value->nam";?>" class="form-control input-md">
-                                                        </div>
-                                                        </div>
-                                                        <div class="form-group d-flex">
-                                                        <label class="pt-1 col-md-3 control-label" for="Author">Số lượng</label>
-                                                        <div class="col-md-3">
-                                                            <input id="Author" name="soluong" type="number" min="1" value="1" class="form-control input-md">
-                                                        </div>
-                                                        <label class="pt-1 col-md-3 control-label" for="Author">Chọn size</label>
-                                                        <div class="col-md-3">
-                                                            <input id="Author" name="size" type="number" min="39" max="44" value="39" class="form-control input-md">
+                                                        <label style="text-align:right;" class=" col-md-2 control-label" for="Author">Chọn size</label>
+                                                        <div class="col-md-2">
+                                                            <input  style="text-align:left" id="Author" name="size" type="number" min="39" max="44" value="39" class="form-control input-md">
                                                         </div>
                                                         </div>
                                                         
