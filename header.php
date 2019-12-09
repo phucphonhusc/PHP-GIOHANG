@@ -13,7 +13,7 @@
         @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap&subset=vietnamese');
     </style>
 
-    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="custom1.css">
     <title>FoneeShoe</title>
 </head>
 
